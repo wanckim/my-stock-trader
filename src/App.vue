@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>My Stock Trader</h1>
+    <router-view></router-view>
   </div>
 </template>
 
