@@ -13,13 +13,13 @@
                   class="form-control"
                   placeholder="Quantity"
                   v-model.number="quantity"
-                  >
+                  :class="{danger: exceedsMaxQuantity}">
         </div>
         <div class="pull-right">
           <button class="btn btn-primary"
                   @click="sellStock"
-                  :disabled="quantity <= 0 || !Number.isInteger(quantity)"
-                  >Sell</button>
+                  :disabled="exceedsMaxQuantity || quantity <= 0 || !Number.isInteger(quantity)"
+                  >{{ exceedsMaxQuantity ? 'Too much' : 'Sell' }}</button>
         </div>
       </div>
     </div>
@@ -34,6 +34,11 @@
     data() {
       return {
         quantity: 0
+      }
+    },
+    computed: {
+      exceedsMaxQuantity() {
+        return this.stock.quantity < this.quantity;
       }
     },
     methods: {
@@ -52,3 +57,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .danger {
+    border: 1.5pt solid red;
+  }
+</style>
