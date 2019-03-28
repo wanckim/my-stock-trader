@@ -18,6 +18,7 @@
     },
     created() {
       this.$store.dispatch('initStock');
+      this.$store.dispatch('chartStocks');
     }
   }
 </script>

@@ -50,16 +50,19 @@
     methods: {
       ...mapActions({
         randomizeStocks: 'randomizeStocks',
-        fetchData: 'loadData'
+        fetchData: 'loadData',
+        setChartData: 'chartStocks'
       }),
       endDay() {
-        return this.randomizeStocks();
+        this.randomizeStocks();
+        this.setChartData();
       },
       saveData() {
         const data = {
+          days: this.$store.getters.chartArr,
           funds: this.$store.getters.funds,
           stockPortfolio: this.$store.getters.stockPortfolio,
-          stocks: this.$store.getters.stocks
+          stocks: this.$store.getters.stocks,
         };
         this.$http.put('data.json', data);
       },
