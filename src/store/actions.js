@@ -8,6 +8,7 @@ export const loadData = ({commit}) => {
         const stocks = data.stocks;
         const funds = data.funds;
         const stockPortfolio = data.stockPortfolio;
+        const days = data.days;
 
         const portfolio = {
           stockPortfolio,
@@ -16,6 +17,7 @@ export const loadData = ({commit}) => {
 
         commit('SET_STOCKS', stocks);
         commit('SET_PORTFOLIO', portfolio);
+        commit('SET_CHART', days);
       }
     })
 };
